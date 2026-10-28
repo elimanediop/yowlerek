@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import {ContactButton} from "@/components/Site";import {dictionary,validLocale} from "@/lib/i18n";
+export default async function Contact({params}:{params:Promise<{locale:string}>}){const {locale}=await params;if(!validLocale(locale))notFound();const d=dictionary[locale];return <main className="wrap contact"><div className="eyebrow">YOW LE REK</div><h1>{d.contactTitle}</h1><p className="muted" style={{maxWidth:650,lineHeight:1.8}}>{d.contactDesc}</p><ContactButton locale={locale}/></main>}

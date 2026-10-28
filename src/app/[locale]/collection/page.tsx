@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import {Products} from "@/components/Site";import {dictionary,validLocale} from "@/lib/i18n";
+export default async function Collection({params}:{params:Promise<{locale:string}>}){const {locale}=await params;if(!validLocale(locale))notFound();const d=dictionary[locale];return <main><div className="wrap collection-header"><div className="eyebrow">DROP 001</div><h1>{d.navCollection}</h1><p className="muted">{d.productsDesc}</p></div><Products locale={locale}/></main>}

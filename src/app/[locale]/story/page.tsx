@@ -1,0 +1,2 @@
+import {notFound} from "next/navigation";import {dictionary,validLocale} from "@/lib/i18n";
+export default async function Story({params}:{params:Promise<{locale:string}>}){const {locale}=await params;if(!validLocale(locale))notFound();const d=dictionary[locale];return <main className="wrap section storypage"><div className="eyebrow">{d.storyTag}</div><h1 style={{fontSize:"clamp(42px,7vw,80px)",letterSpacing:"-.06em"}}>{d.storyTitle}</h1><p>{d.storyText}</p><p className="gold" style={{fontWeight:800}}>YOW LE REK. ★</p></main>}

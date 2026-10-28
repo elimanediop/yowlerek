@@ -1,0 +1,6 @@
+import Link from "next/link";
+import Image from "next/image";
+import {notFound} from "next/navigation";
+import {Products} from "@/components/Site";
+import {dictionary,validLocale} from "@/lib/i18n";
+export default async function Home({params}:{params:Promise<{locale:string}>}){const {locale}=await params;if(!validLocale(locale))notFound();const d=dictionary[locale];return <main><section className="hero"><div className="wrap hero-inner"><div><div className="eyebrow">{d.heroTag}</div><h1>YOW<br/><span className="gold">LE REK.</span></h1><h2 style={{fontSize:26,margin:0}}>{d.heroSub}</h2><p className="muted">{d.heroDesc}</p><div className="actions"><Link className="button" href={`/${locale}/collection`}>{d.explore}</Link><Link className="button secondary" href={`/${locale}/story`}>{d.ourStory}</Link></div></div><div className="hero-logo"><Image src="/brand/yow-le-rek-logo.png" alt="YOW LE REK logo in Senegal colors" width={700} height={700} priority/></div></div></section><Products locale={locale}/><section className="section story"><div className="wrap"><div className="eyebrow">{d.storyTag}</div><h2>{d.storyTitle}</h2><p>{d.storyText}</p><Link className="button" href={`/${locale}/story`}>{d.ourStory}</Link></div></section></main>}
